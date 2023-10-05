@@ -9,53 +9,12 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 
-// import TextUpdaterNode from "./TextUpdaterNode.js";
-
-import "./text-updater-node.css";
-import TextUpdaterNode from "./TextUpdaterNode";
+import initialNodes from "./nodes";
+import initialEdges from "./edges";
 
 const rfStyle = {
-  backgroundColor: "#B8CEFF",
+  backgroundColor: "#D0C0F7",
 };
-
-const initialNodes = [
-  {
-    id: "node-1",
-    type: "textUpdater",
-    position: { x: 0, y: 0 },
-    data: { value: 123 },
-  },
-  {
-    id: "node-2",
-    type: "input",
-    targetPosition: "top",
-    position: { x: 0, y: 200 },
-    data: { label: "node 2" },
-  },
-  {
-    id: "node-3",
-    type: "output",
-    targetPosition: "top",
-    position: { x: 200, y: 200 },
-    data: { label: "node 3" },
-  },
-  {
-    id: "node-4",
-    type: "output",
-    targetPosition: "top",
-    position: { x: 500, y: 500 },
-    data: { label: "node 4" },
-  },
-];
-
-const initialEdges = [
-  { id: "edge-1", source: "node-1", target: "node-2", sourceHandle: "a" },
-  { id: "edge-2", source: "node-1", target: "node-3", sourceHandle: "b" },
-];
-
-// we define the nodeTypes outside of the component to prevent re-renderings
-// you could also use useMemo inside the component
-const nodeTypes = { textUpdater: TextUpdaterNode };
 
 function Flow() {
   const [nodes, setNodes] = useState(initialNodes);
@@ -81,9 +40,9 @@ function Flow() {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
-      nodeTypes={nodeTypes}
       fitView
       style={rfStyle}
+      attributionPosition="top-right"
     >
       <Background />
       <Controls />
